@@ -31,10 +31,12 @@ func CronJob() {
 		fmt.Println(jsonString)
 
 		err := updateData(jsonString)
-		if err == nil {
-			water, wind := findStatus(data.Water, data.Wind)
-			fmt.Printf("status water : %s\nstatus wind : %s\n\n", water, wind)
+		if err != nil {
+			fmt.Println("Failed to update data")
+			continue
 		}
+		water, wind := findStatus(data.Water, data.Wind)
+		fmt.Printf("status water : %s\nstatus wind : %s\n\n", water, wind)
 	}
 }
 
